@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+.logo {
+  border-radius: 30px;
+  width: 50px;
+}
+.register-logo {
+  right: 100px;
+}
+.center {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.box {
+  width: 500px;
+  background: #fff;
+  border: 1px solid #d3d3d3;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  justify-items: center;
+}
+.a {
+  cursor: pointer;
+}
+.actionButtons {
+  display: flex;
+  justify-content: center;
+}
+.tittle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

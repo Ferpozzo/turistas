@@ -1,0 +1,92 @@
+<div class="container">
+    <img src="assets/images/logo.jpeg" alt="homepage" class="register-logo">
+    <div class="box">
+        <div class="tittle">
+            <h1>Registrar-se</h1>
+        </div>
+        <form [formGroup]="registerForm" #ngform="ngForm">
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput placeholder="Nome" formControlName="name"
+                        [ngClass]="{'is-invalid': submitted && form.name.errors }" type="text">
+                    <mat-error *ngIf="submitted && form.name.errors" class="invalid-feedback">
+                        <mat-error *ngIf="form.name.errors.required"> Nome é obrigatório
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Telefone" formControlName="phone"
+                        [ngClass]="{'is-invalid': submitted && form.phone.errors }" type="text">
+                    <mat-error *ngIf="submitted && form.phone.errors" class="invalid-feedback">
+                        <mat-error *ngIf="form.phone.errors.required"> Telefone é obrigatório
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email"
+                        [ngClass]="{'is-invalid': submitted && form.email.errors }" type="email">
+                    <mat-error *ngIf="submitted && form.email.errors" class="invalid-feedback">
+                        <mat-error *ngIf="form.email.errors.required"> Email é obrigatório
+                        </mat-error>
+                        <mat-error *ngIf="form.email.errors.email"> Email inválido
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Senha" formControlName="password"
+                        [ngClass]="{'is-invalid': submitted && form.password.errors }" type="password">
+                    <mat-error *ngIf="submitted && form.password.errors" class="invalid-feedback">
+                        <mat-error *ngIf="form.password.errors.required"> Senha é obrigatória
+                        </mat-error>
+                        <mat-error *ngIf="form.password.errors.minlength"> A senha precisa ter no mínimo 8 caracteres
+                        </mat-error>
+                        <mat-error *ngIf="form.password.errors.maxlength"> A senha precisa ter no máximo 200 caracteres
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Confirme a senha" formControlName="confirm_password"
+                        [errorStateMatcher]="matcher" type="password">
+                    <mat-error *ngIf="submitted && form.confirm_password.errors" class="invalid-feedback">
+                        <mat-error *ngIf="form.confirm_password.errors.required"> Por favor confirme a senha
+                        </mat-error>
+                    </mat-error>
+                    <mat-error *ngIf="submitted && form.confirm_password.touched" class="invalid-feedback">
+                        <mat-error *ngIf="registerForm.hasError('notSame')">Senhas diferentes
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Você deseja</mat-label>
+                    <mat-select matInput formControlName="type"
+                        [ngClass]="{'is-invalid': submitted && form.type.errors }" type="text">
+                        <mat-option *ngFor="let type of userTypes " [value]="type.value">
+                            {{type.action}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="submitted && form.type.errors" class="invalid-feedback">
+                        <mat-error *ngIf="form.type.errors.required">Tipo do usuário é obrigatório
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <div class="gender-radio">
+                    <mat-label>Sexo</mat-label>
+                    <mat-radio-group formControlName="gender" class="gender-radio-group">
+                        <mat-radio-button *ngFor="let gender of userGenders; let i = index" class="gender-radio-button"
+                            [value]="gender.value">
+                            {{gender.pt_br}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                    <mat-error *ngIf="submitted && form.gender.errors" class="invalid-feedback">
+                        <mat-error *ngIf="form.type.gender.required">Sexo é obrigatório
+                        </mat-error>
+                    </mat-error>
+                </div>
+            </div>
+            <div class="actionButtons"><!-- 
+                <button (click)="cancelClicked()" class="btn btn-outline-danger">Cancelar</button> -->
+                <button (click)="save()" class="btn btn-outline-success">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+</div>
