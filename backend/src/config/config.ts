@@ -3,7 +3,10 @@ const MONGO_OPTIONS = {
 }
 
 export const environment = {
-    server: { port: process.env.SERVER_PORT || 3000 },
+    server: {
+        port: process.env.SERVER_PORT || 3000,
+        localesPath: './dist/images/locales/'
+    },
     db: { url: process.env.DB_URL || 'mongodb+srv://turistas:turistas@turistas.jpes4.mongodb.net/turistas?retryWrites=true&w=majority' },
     security: {
         saltRounds: process.env.SALT_ROUNDS || 10,
