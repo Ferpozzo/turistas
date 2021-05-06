@@ -32,6 +32,32 @@ export const LocaleSchema = new mongoose.Schema({
         timestamps: true
     }
 )
+export interface ImageLocaleInterface extends mongoose.Document {
+    _id?: string,
+    _localeId?: string,
+    name: string,
+    path: string,
+    updatedAt?: Date,
+    createdAt?: Date
+}
+export const ImageLocaleSchema = new mongoose.Schema({
+    _localeId: {
+        type: Schema.Types.ObjectId,
+        required: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    path: {
+        type: String,
+        required: true
+    }
+},
+    {
+        timestamps: true
+    }
+)
 const Locale = mongoose.model('Locale', LocaleSchema)
-
-export { Locale }
+const ImageLocale = mongoose.model('ImageLocale', ImageLocaleSchema)
+export { Locale, ImageLocale }
