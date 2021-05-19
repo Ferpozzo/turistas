@@ -9,9 +9,11 @@ export interface LocaleInterface extends mongoose.Document {
     _id?: string,
     _userId?: string,
     name: string,
-    type: 'Home' | 'Hotel',
+    description: string,
+    type: 'Casa' | 'Hotel' | 'Fazenda' | 'Turístico' | 'Comércio',
     status: 'Active' | 'Inactive',
     updatedAt?: Date,
+    address: string,
     createdAt?: Date
 }
 export const LocaleSchema = new mongoose.Schema({
@@ -20,6 +22,14 @@ export const LocaleSchema = new mongoose.Schema({
         required: true
     },
     name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    address: {
         type: String,
         required: true
     },
@@ -88,7 +98,7 @@ ImageLocaleSchema.pre('remove', function () {
         }).promise()
     } else {
         return fs.unlink(path.resolve(__dirname, '..', '..', 'tmp', 'images', 'locales', this.key), cb => {
-            
+
         })
     }
 })
