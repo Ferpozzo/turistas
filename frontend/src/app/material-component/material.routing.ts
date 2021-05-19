@@ -16,6 +16,11 @@ import { TooltipComponent } from './tooltip/tooltip.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
+import { ViewLocaleComponent } from '../Components/locales/view-locale/view-locale.component';
+import { NewLocaleComponent } from '../Components/locales/new-locale/new-locale.component';
+import { UpdateLocaleComponent } from '../Components/locales/update-locale/update-locale.component';
+import { DeleteLocaleComponent } from '../Components/locales/delete-locale/delete-locale.component';
+import { DetailLocaleComponent } from '../Components/locales/detail-locale/detail-locale.component';
 
 export const MaterialRoutes: Routes = [
   {
@@ -81,5 +86,25 @@ export const MaterialRoutes: Routes = [
   {
     path: 'slide-toggle',
     component: SlideToggleComponent
+  },
+  {
+    path: 'locales',
+    component: ViewLocaleComponent
+  },
+  {
+    path: 'locales/new',
+    component: NewLocaleComponent,
+  },
+  {
+    path: 'locales/update/:id',
+    component: UpdateLocaleComponent,
+  },
+  {
+    path: 'locales/delete/:id',
+    component: DeleteLocaleComponent,
+  },
+  {
+    path: 'locales/detail/:id',
+    component: DetailLocaleComponent,
   }
 ];

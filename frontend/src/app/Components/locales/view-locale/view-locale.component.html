@@ -1,0 +1,76 @@
+<div>
+    <h3>Lista de Locais</h3>
+</div>
+<div *ngIf="dataSource">
+    <button class="new-button" mat-flat-button color="accent" routerLink='new'>Novo Local</button>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Nome </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Descrição </th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Endereço </th>
+            <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+        <!-- 
+        <ng-container matColumnDef="value">
+            <th mat-header-cell *matHeaderCellDef> Preço </th>
+            <td mat-cell *matCellDef="let element"> {{element.value | currency:'BRL'}} </td>
+        </ng-container> -->
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="type">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+        <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef> Criado em </th>
+            <td mat-cell *matCellDef="let element"> {{element.createdAt | date:'dd/MM/yyyy HH:mm:ss'}} </td>
+        </ng-container>
+        <ng-container matColumnDef="updatedAt">
+            <th mat-header-cell *matHeaderCellDef> Alterado em </th>
+            <td mat-cell *matCellDef="let element"> {{element.updatedAt | date:'dd/MM/yyyy HH:mm:ss'}} </td>
+        </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="detail">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-flat-button color="accent" routerLink="detail/{{element._id}}" selected>Detalhes</button>
+            </td>
+        </ng-container>
+        <!-- 
+        <ng-container matColumnDef="update">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-flat-button color="primary" routerLink="update/{{element._id}}" selected>Editar</button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef> </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-flat-button color="warn" routerLink="delete/{{element._id}}" selected>Deletar</button>
+            </td>
+        </ng-container> -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+<!-- 
+<button routerLink='update/123'>update</button>
+<button routerLink='delete/123'>delete</button> -->
