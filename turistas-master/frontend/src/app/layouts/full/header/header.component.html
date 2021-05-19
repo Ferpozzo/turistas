@@ -1,0 +1,35 @@
+<!-- ============================================================== -->
+<!-- Profile - style you can find in header.scss -->
+<!-- ============================================================== -->
+
+<span class="" *ngIf="!user">
+    <span class="">
+        <a routerLink='login' class=" m-r-5 btn btn-outline-primary" style="background-color: #dee2e669;" mat-raised-button>Entrar</a>
+    </span>
+    <span class="logar">
+        <a routerLink='register' class=" m-r-5 btn btn-outline-success" style="background-color: #dee2e669;" mat-raised-button>Cadastrar</a>
+    </span>
+</span>
+<div *ngIf="user">
+    <span style="margin-right: 13px" *ngIf="user">Bem vindo {{user.name}}</span>
+    <button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5" style="background-color: #ffffff;"> <img
+            src="assets/images/users/profile.png" alt="user" class="profile-pic"> </button>
+    <mat-menu #profile="matMenu" class="mymegamenu">
+        <button mat-menu-item>
+            <mat-icon>settings</mat-icon> Configurações
+        </button>
+        <button mat-menu-item>
+            <mat-icon>account_box</mat-icon> Perfil
+        </button>
+        <button mat-menu-item routerLink='locales'>
+            <mat-icon>home</mat-icon> Meus Locais
+        </button>
+        <!--
+        <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon> Disable notifications
+        </button> -->
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon> Logout
+        </button>
+    </mat-menu>
+</div>

@@ -1,0 +1,12 @@
+table {
+    width: 99%;
+    margin-bottom: 25px;
+  }
+  .mat-flat-button {
+      margin: 0 auto;
+  }
+  .new-button{
+      float: right;
+      margin-right: 16px;
+      margin-bottom: 8px;
+  }

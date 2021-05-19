@@ -1,0 +1,112 @@
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+
+
+<div class="main-container">
+    <!-- ============================================================== -->
+    <!-- Topbar - style you can find in header.scss -->
+    <!-- ============================================================== -->
+    <mat-toolbar style="background-color: #5F9EA0;" class="topbar telative">
+        <!-- ============================================================== -->
+        <!-- Logo - style you can find in header.scss -->
+        <!-- ============================================================== -->
+      <!--- <button mat-icon-button (click)="snav.toggle()" value="sidebarclosed">
+          <mat-icon>menu</mat-icon>
+      </button>-->
+
+      <div class="example-button-container">
+        <button mat-icon-button (click)="snav.toggle()" style="background-color: #5F9EA0;" aria-label="Example icon button with a menu icon" value="sidebarclosed">
+            <mat-icon>menu</mat-icon>
+          </button>
+    </div>
+
+
+   
+
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">
+                <!-- Logo icon --><b>
+                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                    <!-- Dark Logo icon -->
+                    <img src="assets/images/text-logo" alt="homepage" sizes="50px" class="dark-logo">
+                    <!-- Light Logo icon -->
+                </b>
+                <!--End Logo icon -->
+                <!-- Logo text -->
+                <span fxShow="false" fxShow.gt-xs>
+                    <!-- Light Logo text -->
+                    <img src="assets/images/text-logo.png" class="light-logo" alt="homepage">
+                </span>
+            </a>
+        </div>
+
+
+
+
+<!--
+        <ul class="slider">
+          <li>
+                <input type="radio" id="slide1" name="slide" checked>
+                <label for="slide1"></label>
+                <img src="images/1.jpg" />
+          </li>
+          <li>
+                <input type="radio" id="slide2" name="slide">
+                <label for="slide2"></label>
+                <img src="images/2.jpg" />
+          </li>
+          <li>
+                <input type="radio" id="slide3" name="slide">
+                <label for="slide3"></label>
+                <img src="images/3.jpg" />
+          </li>
+      </ul>
+    -->
+        <!-- ============================================================== -->
+        <!-- sidebar toggle -->
+        <!-- ============================================================== -->
+
+
+        <span fxFlex></span>
+        <!-- ============================================================== -->
+        <!-- app header component - style you can find in header.scss / header.component.ts-->
+        <!-- ============================================================== -->
+        <app-header [user]="user"></app-header>
+    </mat-toolbar>
+    <!-- ============================================================== -->
+    <!-- End Topbar - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
+        <!-- ============================================================== -->
+        <!-- Sidebar - style you can find in sidebar.scss -->
+        <!-- ============================================================== -->
+        <mat-sidenav #snav id="snav" class="dark-sidebar pl-xs" [mode]="mobileQuery.matches ? 'side' : 'over'"
+            fixedTopGap="0" [opened]="mobileQuery.matches" [disableClose]="mobileQuery.matches">
+
+            <app-sidebar [user]="user"></app-sidebar>
+
+        </mat-sidenav>
+        <!-- ============================================================== -->
+        <!-- Sidebar - style you can find in sidebar.scss -->
+        <!-- ============================================================== -->
+
+        <!-- ============================================================== -->
+        <!-- Page container - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <mat-sidenav-content class="page-wrapper">
+
+            <div class="page-content">
+
+                <router-outlet>
+                    <app-spinner></app-spinner>
+                </router-outlet>
+
+            </div>
+
+        </mat-sidenav-content>
+        <!-- ============================================================== -->
+        <!-- Page container - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+    </mat-sidenav-container>
+</div>
