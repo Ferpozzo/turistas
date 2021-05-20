@@ -27,6 +27,7 @@ import { UpdateLocaleComponent } from './Components/locales/update-locale/update
 import { DeleteLocaleComponent } from './Components/locales/delete-locale/delete-locale.component';
 import { ViewLocaleComponent } from './Components/locales/view-locale/view-locale.component';
 import { DetailLocaleComponent } from './Components/locales/detail-locale/detail-locale.component';
+import { FileUploadService } from './services/file-upload/file-upload.service';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,9 @@ import { DetailLocaleComponent } from './Components/locales/detail-locale/detail
     {
       provide: LocationStrategy,
       useClass: PathLocationStrategy
-    }
+    },
+    FileUploadService,
+    DeleteLocaleComponent
   ],
   bootstrap: [AppComponent]
 })

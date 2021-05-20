@@ -21,6 +21,7 @@ import { NewLocaleComponent } from '../Components/locales/new-locale/new-locale.
 import { UpdateLocaleComponent } from '../Components/locales/update-locale/update-locale.component';
 import { DeleteLocaleComponent } from '../Components/locales/delete-locale/delete-locale.component';
 import { DetailLocaleComponent } from '../Components/locales/detail-locale/detail-locale.component';
+import { ProfileComponent } from '../components/user-components/profile/profile.component';
 
 export const MaterialRoutes: Routes = [
   {
@@ -106,5 +107,9 @@ export const MaterialRoutes: Routes = [
   {
     path: 'locales/detail/:id',
     component: DetailLocaleComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
   }
 ];

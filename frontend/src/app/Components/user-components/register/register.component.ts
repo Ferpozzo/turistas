@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     private api: UserService) { }
 
   ngOnInit(): void {
-    this.loggedId = localStorage.getItem('payload')
+    this.loggedId = localStorage.getItem('userId')
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
