@@ -33,6 +33,10 @@ export class UserService {
     return this.http.put(environment.backendURL + 'users/' + user._id, user,
       { headers: this.httpHeaders });
   }
+  updateUser(user: UserInterface): Observable<any> {
+    return this.http.patch(environment.backendURL + 'users/' + user._id, user,
+      { headers: this.httpHeaders });
+  }
   login(user: UserLoginInterface): Observable<any> {
     return this.http.post(environment.backendURL + 'auth/', user,
       { headers: this.httpHeaders });

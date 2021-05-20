@@ -14,10 +14,7 @@
     <button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5" style="background-color: #ffffff;"> <img
             src="assets/images/users/profile.png" alt="user" class="profile-pic"> </button>
     <mat-menu #profile="matMenu" class="mymegamenu">
-        <button mat-menu-item>
-            <mat-icon>settings</mat-icon> Configurações
-        </button>
-        <button mat-menu-item>
+        <button mat-menu-item routerLink='profile'>
             <mat-icon>account_box</mat-icon> Perfil
         </button>
         <button mat-menu-item routerLink='locales'>

@@ -1,20 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs';
 import { localeTypes } from 'src/app/models/locale.model';
+import { FileQueueObject, FileUploadService } from 'src/app/services/file-upload/file-upload.service';
 import { LocaleService } from 'src/app/services/locale/locale.service';
+import { FileUploader } from 'ng2-file-upload';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-new-locale',
   templateUrl: './new-locale.component.html',
   styleUrls: ['./new-locale.component.css']
 })
 export class NewLocaleComponent implements OnInit {
+  public uploader: FileUploader = new FileUploader({
+    url: environment.backendURL + 'locales/',
+    itemAlias: 'image'
+  });
   registerForm: FormGroup | any
   loggedId: any
   submitted = false
+  success = false
   localeTypes = localeTypes
+  queue: Observable<FileQueueObject[]> | any;
+  localeId: string = ''
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -51,6 +63,8 @@ export class NewLocaleComponent implements OnInit {
             horizontalPosition: 'end',
             verticalPosition: 'top'
           })
+          this.localeId = data._id
+          this.success = true
         },
         error => {
           this._snackBar.open('Erro ao registrar: ' + error.message, 'Fechar', {
@@ -66,5 +80,6 @@ export class NewLocaleComponent implements OnInit {
     this.submitted = false;
     this.registerForm.reset();
   }
+
   get form() { return this.registerForm.controls; }
 }

@@ -22,7 +22,7 @@ export class LocaleService {
       { headers: this.httpHeaders });
   }
   getOne(_id: string): Observable<any> {
-    return this.http.get(environment.backendURL + this.url + _id,
+    return this.http.get(environment.backendURL + this.url + '/' + _id,
       { headers: this.httpHeaders });
   }
   createOne(locale: LocaleInterface): Observable<any> {
@@ -30,11 +30,11 @@ export class LocaleService {
       { headers: this.httpHeaders });
   }
   deleteOne(_id: string): Observable<any> {
-    return this.http.delete(environment.backendURL + this.url + _id + '/',
+    return this.http.delete(environment.backendURL + this.url + '/' + _id + '/',
       { headers: this.httpHeaders });
   }
   updateOne(locale: LocaleInterface): Observable<any> {
-    return this.http.patch(environment.backendURL + this.url + locale._id, locale,
+    return this.http.patch(environment.backendURL + this.url + '/' + locale._id, locale,
       { headers: this.httpHeaders });
   }
 }

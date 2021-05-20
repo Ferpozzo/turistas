@@ -1,1 +1,79 @@
-<p>detail-locale works!</p>
+<div class="container">
+    <div class="box">
+        <div class="tittle">
+            <h1>Detalhes de local</h1>
+        </div>
+        <form [formGroup]="registerForm" #ngform="ngForm" *ngIf="locale">
+            <div class="form-group">
+                <mat-form-field>
+                    <input matInput placeholder="Nome" formControlName="name"
+                        [ngClass]="{'is-invalid': submitted && form.name.errors }" type="text">
+                    <mat-error *ngIf="submitted && form.name.errors" class="invalid-feedback">
+                        <mat-error *ngIf="form.name.errors.required"> Nome é obrigatório
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Descrição do local</mat-label>
+                    <textarea matInput formControlName="description"
+                        [ngClass]="{'is-invalid': submitted && form.description.errors }" type="text">
+                    </textarea>
+                    <mat-error *ngIf="submitted && form.description.errors" class="invalid-feedback">
+                        <mat-error *ngIf="form.description.errors.required"> Descrição é obrigatória
+                        </mat-error>
+                        <mat-error *ngIf="form.description.errors.minlength"> Mínimo de 5 caracteres
+                        </mat-error>
+                        <mat-error *ngIf="form.description.errors.maxlength"> Máximo de 200 caracteres
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Endereço do local" formControlName="address"
+                        [ngClass]="{'is-invalid': submitted && form.address.errors }" type="text">
+                    <mat-error *ngIf="submitted && form.address.errors" class="invalid-feedback">
+                        <mat-error *ngIf="form.address.errors.required"> Endereço é obrigatório
+                        </mat-error>
+                        <mat-error *ngIf="form.address.errors.minlength"> Mínimo de 5 caracteres
+                        </mat-error>
+                        <mat-error *ngIf="form.address.errors.maxlength"> Máximo de 200 caracteres
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Tipo do local </mat-label>
+                    <mat-select matInput formControlName="type"
+                        [ngClass]="{'is-invalid': submitted && form.type.errors }" type="text">
+                        <mat-option *ngFor="let type of localeTypes " [value]="type.value">
+                            {{type.action}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="submitted && form.type.errors" class="invalid-feedback">
+                        <mat-error *ngIf="form.type.errors.required">Tipo do local é obrigatório
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Status do local</mat-label>
+                    <mat-select matInput formControlName="status"
+                        [ngClass]="{'is-invalid': submitted && form.status.errors }" type="text">
+                        <mat-option value="Active">
+                            Ativo
+                        </mat-option>
+                        <mat-option value="Inactive">
+                            Inativo
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="submitted && form.status.errors" class="invalid-feedback">
+                        <mat-error *ngIf="form.status.errors.required">Status do local é obrigatório
+                        </mat-error>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="actionButtons">
+                <!-- 
+                <button (click)="cancelClicked()" class="btn btn-outline-danger">Cancelar</button> -->
+                <button (click)="save()" class="btn btn-outline-success">Salvar alterações</button>
+            </div>
+        </form>
+    </div>
+</div>
